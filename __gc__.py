@@ -37,7 +37,7 @@ def create_generator_circuit(params):
 def sample_generator(params, n_samples=500):
     try:
         circuit = create_generator_circuit(params)
-        simulator = cirq.SparseSimulator()
+        simulator = cirq.Simulator()  # Use standard simulator
         resolver = {f'theta_{i}': params[i] for i in range(len(params))}
         results = simulator.run(circuit, param_resolver=resolver, repetitions=n_samples)
         measurements = results.measurements['m']
