@@ -1,0 +1,5 @@
+2025-04-22 23:11:59,107 - ERROR - Generator sampling failed: module 'cirq' has no attribute 'SparseSimulator'
+2025-04-22 23:11:59,107 - ERROR - Training loop failed: module 'cirq' has no attribute 'SparseSimulator'
+2025-04-22 23:11:59,108 - ERROR - Generator sampling failed: module 'cirq' has no attribute 'SparseSimulator'
+2025-04-22 23:11:59,108 - ERROR - Plotting failed: module 'cirq' has no attribute 'SparseSimulator'
+2025-04-22 23:11:59,109 - ERROR - Final plotting failed: module 'cirq' has no attribute 'SparseSimulator'
