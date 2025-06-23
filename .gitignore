@@ -1,2 +1,5 @@
-sa.ipynb
+# Ignore a specific Python file
 test.py
+
+# Ignore a specific Jupyter Notebook
+sa.ipynb
