@@ -1,7 +1,7 @@
 from Bio.PDB import PDBParser
 import matplotlib.pyplot as plt 
 import gzip
-import logging
+
 
 def show_sturcture(path):
     praser = PDBParser(QUIET=True)
