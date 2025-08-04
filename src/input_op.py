@@ -1,6 +1,7 @@
 from google import genai
 from os import environ
 from dotenv import load_dotenv
+from IPython.display import Markdown
 
 load_dotenv()
 cli = genai.Client(api_key=environ.get("GEMINI_API_KEY"))
@@ -10,4 +11,4 @@ response = cli.models.generate_content(
     contents=[File, "\n\n",
               input("Enter your query: ")])
 
-print(response.text)
+Markdown(response.text)
