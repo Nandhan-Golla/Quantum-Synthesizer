@@ -3,3 +3,6 @@ test.py
 
 # Ignore a specific Jupyter Notebook
 sa.ipynb
+
+# Ignore all the enivronment files
+.env
