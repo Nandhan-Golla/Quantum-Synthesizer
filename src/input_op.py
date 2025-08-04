@@ -1,5 +1,10 @@
 import Input_loader
-from IPython.display import display
+#from IPython.display import display, Markdown
+from rich.console import Console
+from rich.markdown import Markdown
 
-x = Input_loader.load_data(dir='/home/nandhan/test', api_from_base=True)
-display(x.process())
+console = Console()
+x = Input_loader.load_data(dir='/home/nandhan/test', api_custom_model=True)
+md = Markdown(x.process())
+
+console.print(md)
