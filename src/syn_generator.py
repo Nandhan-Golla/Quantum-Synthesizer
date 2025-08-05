@@ -105,16 +105,17 @@ bot = cli.chats.create(
     model='gemini-1.5-pro',
     config=chat_config
 )
-Console.print("Agent is Being Rendered please wait..")
+print("Agent is Being Rendered please wait..")
 res = bot.send_message(f"Report: {report}")
-Console.print(Markdown(res))
+console = Console()
+console.print(Markdown(res.text))
 
-Console.print("Are You Satisfied with your analysis")
+print("Are You Satisfied with your analysis")
 inp = input("Please Enter yes or no: ")
 if inp.lower() == 'no':
     inp = input("Please enter your concern: ")
     res = bot.send_message(f"Iam not satisfied with your report at me, I want the in depth analysis, this is the issue {inp}")
-    Console.print(Markdown(res))
+    console.print(Markdown(res.text))
     inp_1 = input("Is your issue solved(yes/no): ")
     if inp_1.lower() == 'no':
         print("Entering Chat mode..")
@@ -124,11 +125,11 @@ if inp.lower() == 'no':
             if user.lower() == 'quit':
                 break
             res = bot.send_message(user)
-            Console.print(Markdown(res))
+            console.print(Markdown(res.text))
     else:
-        Console.print("Have a nice day")
+        print("Have a nice day")
 else:
-    Console.print("Have a nice day")
+    print("Have a nice day")
 
 
 
