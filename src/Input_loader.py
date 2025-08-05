@@ -7,17 +7,23 @@ import dotenv as env
 class load_data:
     def __init__(self, dir, api_from_base=None, api_custom_model=None):
         self.dir = dir
-        #self.api = api
+        self.api_key = None
+        
+        # Always load environment variables
+        env.load_dotenv()
+        
         if api_from_base:
-            env.load_dotenv()
-            self.api_key_dir = os.environ.get("GEMINI_API_KEY")
+            self.api_key = os.environ.get("GEMINI_API_KEY")
         elif api_custom_model:
-            try:
-                self.api_key_dir = os.environ.get("GEMINI_API_KEY_2")
-
-            except Exception as e :
-                print(f"Exception occured by passing the api_key")
-                self.api_key_dir = os.environ.get("GEMINI_API_KEY_3")
+            # Try multiple API key environment variables
+            self.api_key = (os.environ.get("GEMINI_API_KEY_2") or 
+                           os.environ.get("GEMINI_API_KEY_3"))
+        else:
+            # Default to primary API key
+            self.api_key = os.environ.get("GEMINI_API_KEY")
+            
+        if not self.api_key:
+            raise ValueError("Missing Gemini API key! Please set one of the following environment variables: GEMINI_API_KEY, GEMINI_API_KEY_2, or GEMINI_API_KEY_3")
     
     def process(self):
         #console = Console()
@@ -83,7 +89,7 @@ Please organize your output using the following structured sections:
 ---
 
 Now process all attached files and generate the master report as per the above format."""
-        client = gai.Client(api_key=self.api_key_dir)
+        client = gai.Client(api_key=self.api_key)
         uploads = [client.files.upload(file=x) for x in ind_paths]
         report = client.models.generate_content(model='gemini-1.5-flash', contents=[[prompt] + uploads])
         return report.text
