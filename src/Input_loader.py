@@ -5,25 +5,13 @@ import dotenv as env
 
 
 class load_data:
-    def __init__(self, dir, api_from_base=None, api_custom_model=None):
+    def __init__(self, dir, api_key):
         self.dir = dir
         self.api_key = None
         
         # Always load environment variables
         env.load_dotenv()
-        
-        if api_from_base:
-            self.api_key = os.environ.get("GEMINI_API_KEY")
-        elif api_custom_model:
-            # Try multiple API key environment variables
-            self.api_key = os.environ.get("GEMINI_API_KEY_2") 
-        else:
-            # Default to primary API key
-            self.api_key = os.environ.get("GEMINI_API_KEY")
-            
-        if not self.api_key:
-            raise ValueError("Missing Gemini API key! Please set one of the following environment variables: GEMINI_API_KEY, GEMINI_API_KEY_2, or GEMINI_API_KEY_3")
-    
+
     def process(self):
         #console = Console()
         ind_paths = []

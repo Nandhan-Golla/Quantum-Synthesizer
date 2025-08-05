@@ -94,11 +94,12 @@ env.load_dotenv()
 
 cli = gai.Client(api_key=os.environ.get("GEMINI_API_KEY_2"))
 chat_config = gai.types.GenerateContentConfig(system_instruction=syn_prompt)
+Dataloader = Input_loader.load_data(dir=input("Please enter your dir: "), api_key=os.environ.get("GEMINI_API_KEY_2"))
 try:
-    report = Input_loader.load_data.process(str(input("Please enter the dir: ")))
+    report = Dataloader.process()
 except Exception:
     print(f"Exception Occured try again :)")
-    report = Input_loader.load_data.process(str(input("Please Enter the DIR: ")))
+    #report = Input_loader.load_data.process((input("Please Enter the DIR: ")))
 
 bot = cli.chats.create(
     model='gemini-1.5-pro',
