@@ -116,5 +116,18 @@ if inp.lower() == 'no':
     Console.print(Markdown(res))
     inp_1 = input("Is your issue solved(yes/no): ")
     if inp_1.lower() == 'no':
-        
+        print("Entering Chat mode..")
+        print("Please Talk out to the agent.")
+        while True:
+            user = input("User: ")
+            if user.lower() == 'quit':
+                break
+            res = bot.send_message(user)
+            Console.print(Markdown(res))
+    else:
+        Console.print("Have a nice day")
+else:
+    Console.print("Have a nice day")
+
+
 
