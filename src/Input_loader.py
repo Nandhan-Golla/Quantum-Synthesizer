@@ -12,7 +12,12 @@ class load_data:
             env.load_dotenv()
             self.api_key_dir = os.environ.get("GEMINI_API_KEY")
         elif api_custom_model:
-            self.api_key_dir = input("Enter your Custom API Key: ") 
+            try:
+                self.api_key_dir = os.environ.get("GEMINI_API_KEY_2")
+
+            except Exception as e :
+                print(f"Exception occured by passing the api_key")
+                self.api_key_dir = os.environ.get("GEMINI_API_KEY_3")
     
     def process(self):
         #console = Console()
