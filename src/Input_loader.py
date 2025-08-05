@@ -16,8 +16,7 @@ class load_data:
             self.api_key = os.environ.get("GEMINI_API_KEY")
         elif api_custom_model:
             # Try multiple API key environment variables
-            self.api_key = (os.environ.get("GEMINI_API_KEY_2") or 
-                           os.environ.get("GEMINI_API_KEY_3"))
+            self.api_key = os.environ.get("GEMINI_API_KEY_2") 
         else:
             # Default to primary API key
             self.api_key = os.environ.get("GEMINI_API_KEY")
