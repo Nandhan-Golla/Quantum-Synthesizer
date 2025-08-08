@@ -11,6 +11,7 @@ dependencies = [
     "google-genai>=1.28.0",
     "gradio>=5.39.0",
     "groq>=0.30.0",
+    "gymnasium[classic-control]>=1.2.0",
     "ipykernel>=6.29.5",
     "ipython>=9.3.0",
     "keras>=3.10.0",

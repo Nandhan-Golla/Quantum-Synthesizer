@@ -6,3 +6,6 @@ sa.ipynb
 
 # Ignore all the enivronment files
 .env
+# Ignore all the . folders
+.test
+.venv
