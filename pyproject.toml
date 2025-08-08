@@ -1,7 +1,7 @@
 [project]
 name = "quantum-gan"
 version = "0.1.0"
-description = "Add your description here"
+description = "A Quantum-RL Powered Drug Synthesiser for Research and User Analysis"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
@@ -16,7 +16,9 @@ dependencies = [
     "keras>=3.10.0",
     "matplotlib>=3.10.3",
     "pandas>=2.3.0",
+    "pylatexenc>=2.10",
     "qiskit>=2.1.1",
+    "qiskit-aer>=0.17.1",
     "rich>=14.0.0",
     "scikit-learn>=1.7.0",
     "stable-baselines3>=2.7.0",
