@@ -123,10 +123,10 @@ You will be provided with multiple medical reports in various formats, including
         #global report
         self.report = client.models.generate_content(model='gemini-1.5-flash', contents=[[self.main_instruction] + uploads])
         
-        return self.console.print(self.md(self.report.text))
+        self.console.print(self.md(self.report.text))
     
 
-    def cross_verify_info(self):
+    def cross_verify_info(self, tempreature):
         instructions = """ I want you to verify the given medical report as per the all the medical laws
         if found anu kind of mis halocinations and misconceptions to be corrected and a new report must be generated. 
         all the details in the message must be seen and verified. with the open medical databases and must recommend more tips for having more 
@@ -143,7 +143,7 @@ You will be provided with multiple medical reports in various formats, including
         instructions2 = f"""Just answer in 0 or 1 for the questions asked; You will be asked questions for that you must 
         answer in 0 for false and 1 for true. Just follow them, your extensions are: {instructions} follow them and also reiterate from this {self.main_instruction}. 
         But yet you must just answer in 1 char just (0 or 1) thats it.""" 
-        chats2 = gai.types.GenerateContentConfig(system_instruction=instructions2)
+        chats2 = gai.types.GenerateContentConfig(system_instruction=instructions2, temperature=tempreature)
         bot2 = cli.chats.create(
             model='gemini-2.5-pro',
             config=chats2
